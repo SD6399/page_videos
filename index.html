@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Шаблоны</h1>
+    </header>
+    <div>
+
+
+        <button onclick="toggle_task();" id="styling">
+            Новая задача
+            <!-- <div class="demo" :class="{active : boxA}"> -->
+
+        </button>
+
+        <input id="plh" type="text" placeholder="Search..">
+        <button type="submit">
+            <img src="glass.png" style="width: 40px;height: 40px;object-fit: cover;">
+        </button>
+
+        <button type="submit" style="margin-left: 100px;">
+            <img src="filter.png" style="width: 40px;height: 40px;object-fit: cover;">
+        </button>
+
+    </div>
+
+
+    <table id="tbl">
+        <tr>
+            <th>Название видео</th>
+            <th>Количество шаблонов</th>
+            <th>Количество аномалий</th>
+        </tr>
+        <tr>
+        <div style="display: none;width: 200px;" id="skill_bar" class="skill">
+            <p style="padding-bottom: 30px;">Уровень загрузки</p>
+            <div class="skill-bar skill1">
+                <span class="skill-count1">0%</span>
+            </div>
+
+        </div>
+        </tr>
+        <!-- <tr>
+          <td>Peter</td>
+          <td>Griffin</td>
+        </tr>
+        <tr>
+          <td>Lois</td>
+          <td>Griffin</td>
+        </tr> -->
+    </table>
+
+
+    <div id="popup" style="display: none;">
+
+        <h3 style="text-align: center;">Обнаружение шаблонов </h3>
+        <ul id="ul_popup">
+            <li>Video 1</li>
+            <li>Video 2</li>
+            <li>15 треков</li>
+            <li>12 треков</li>
+
+        </ul>
+        <div style="margin-left: 20%;">
+            <button onclick="toggle_bar();dimming();toggle_task()" style="background-color: blue;border-radius: 8px;height: 30px;">
+                Запуск
+            </button>
+            <button style="background-color: red;border-radius: 8px;height: 30px; margin-left: 50px;"> Отмена </button>
+        </div>
+    </div>
+
+    <br>
+
+    <div id="player" style="display: none;">
+        <div style="display: inline-block;  ">
+            <video style="width: 400px;height: 300px;" playsinline controls data-poster="/path/to/poster.jpg">
+                <source src="Road.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <div style="display: inline-block; margin-left: 50px;">
+            <ul style="margin-bottom: 100px;" ; class="nav nav-pills" id="myTab">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">Шаблоны</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile" class="nav-link">Аномалии</a>
+                </li>
+
+            </ul>
+            <div style="padding-top: 60px;">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="home">
+                        <p>15 шаблонов </p>
+                    </div>
+                    <div class="tab-pane fade" id="profile">
+                        <p>5 аномалий </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    src = "https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var tabList = [].slice.call(document.querySelectorAll("#myTab a"));
+        tabList.forEach(function (tab) {
+            var tabTrigger = new bootstrap.Tab(tab);
+
+            tab.addEventListener("click", function (event) {
+                event.preventDefault();
+                tabTrigger.show();
+            });
+        });
+    });
+
+    function toggle_task() {
+        console.log("entrt")
+        var x = document.getElementById("popup");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function toggle_bar() {
+        console.log("enter 2")
+        var x = document.getElementById("skill_bar");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function toggle_player() {
+        console.log("enter vid player")
+        var x = document.getElementById("player");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function activaTab(tab) {
+        $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+    };
+
+    function dimming() {
+        var progressbar = document.getElementById("skill_bar");
+        progressbar.classList.add('dim');
+
+        // var tableRow = document.getElementById("tbl");
+        // var row = tableRow.insertRow(1);
+        // var cell1 = row.insertCell(0);
+        // var cell2 = row.insertCell(1);
+        // var cell3 = row.insertCell(2);
+        // let buttonContainer = document.getElementById('button-container');
+        // let button = document.createElement("BUTTON");
+        // let node = document.createTextNode("Button Title");
+
+        // button.appendChild(node);
+        // cell1.innerHTML = button;
+        // cell2.innerHTML = "шаблоны";
+        // cell3.innerHTML = "аномалии";
+
+
+        let tr = document.createElement("TR");
+        let td1 = document.createElement("TD");
+        let td2 = document.createElement("TD");
+        let td = document.createElement("TD");
+        let button = document.createElement("BUTTON");
+
+        let node = document.createTextNode("Video");
+
+        td1.innerText = Math.floor(Math.random() * 15) + 1
+        td2.innerText = Math.floor(Math.random() * 15) + 1
+        button.appendChild(node);
+        td.onclick = toggle_player;
+        td.appendChild(node);
+        td.appendChild(progressbar);
+       
+        tr.appendChild(td);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+
+        document.getElementById("tbl").appendChild(tr);
+
+    }
+
+
+</script>
+</body>
+
+
+
+
+</html>
