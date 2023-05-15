@@ -165,3 +165,7 @@ li {
         /* For Internet Explorer */
        filter:brightness(50%);
     }
+
+    .undim {
+        filter:brightness(100%);
+    }

@@ -17,9 +17,7 @@
         <h1>Шаблоны</h1>
     </header>
     <div>
-
-
-        <button onclick="toggle_task();" id="styling">
+        <button onclick="toggle_task();toggle_bar();" id="styling">
             Новая задача
             <!-- <div class="demo" :class="{active : boxA}"> -->
 
@@ -44,22 +42,14 @@
             <th>Количество аномалий</th>
         </tr>
         <tr>
-        <div style="display: none;width: 200px;" id="skill_bar" class="skill">
-            <p style="padding-bottom: 30px;">Уровень загрузки</p>
-            <div class="skill-bar skill1">
-                <span class="skill-count1">0%</span>
-            </div>
+            <div style="display: none;width: 200px;" id="skill_bar" class="skill">
+                <p style="padding-bottom: 30px;">Уровень загрузки</p>
+                <div class="skill-bar skill1">
+                    <span class="skill-count1">0%</span>
+                </div>
 
-        </div>
-        </tr>
-        <!-- <tr>
-          <td>Peter</td>
-          <td>Griffin</td>
-        </tr>
-        <tr>
-          <td>Lois</td>
-          <td>Griffin</td>
-        </tr> -->
+            </div>
+        </tr>   
     </table>
 
 
@@ -74,7 +64,8 @@
 
         </ul>
         <div style="margin-left: 20%;">
-            <button onclick="toggle_bar();dimming();toggle_task()" style="background-color: blue;border-radius: 8px;height: 30px;">
+            <button onclick="toggle_task();toggle_bar();dimming();add_val();"
+                style="background-color: blue;border-radius: 8px;height: 30px;">
                 Запуск
             </button>
             <button style="background-color: red;border-radius: 8px;height: 30px; margin-left: 50px;"> Отмена </button>
@@ -89,129 +80,40 @@
                 <source src="Road.mp4" type="video/mp4" />
             </video>
         </div>
-        <div style="display: inline-block; margin-left: 50px;">
-            <ul style="margin-bottom: 100px;" ; class="nav nav-pills" id="myTab">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link active">Шаблоны</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#profile" class="nav-link">Аномалии</a>
-                </li>
-
+        <div style="margin-left: 400px;margin-top: -270px;" class="container">
+              <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#home">Шаблоны</a></li>
+              <li><a data-toggle="tab" href="#menu1">Аномалии</a></li>
+              
             </ul>
-            <div style="padding-top: 60px;">
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="home">
-                        <p>15 шаблонов </p>
-                    </div>
-                    <div class="tab-pane fade" id="profile">
-                        <p>5 аномалий </p>
-                    </div>
-
-                </div>
+          
+            <div class="tab-content">
+              <div id="home" class="tab-pane fade in active">
+                <ul>
+                    <li> Шаблон 1 </li>
+                    <li> Шаблон 2 </li>
+                </ul>
+                
+              </div>
+              <div id="menu1" class="tab-pane fade">
+                <ul>
+                    <li> Аномалии 1 </li>
+                    <li> Аномалии 2 </li>
+                </ul>
+                
+              </div>
+             
             </div>
-        </div>
+          </div>
     </div>
 </body>
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-
-    src = "https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var tabList = [].slice.call(document.querySelectorAll("#myTab a"));
-        tabList.forEach(function (tab) {
-            var tabTrigger = new bootstrap.Tab(tab);
-
-            tab.addEventListener("click", function (event) {
-                event.preventDefault();
-                tabTrigger.show();
-            });
-        });
-    });
-
-    function toggle_task() {
-        console.log("entrt")
-        var x = document.getElementById("popup");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-
-    function toggle_bar() {
-        console.log("enter 2")
-        var x = document.getElementById("skill_bar");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-
-    function toggle_player() {
-        console.log("enter vid player")
-        var x = document.getElementById("player");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-
-    function activaTab(tab) {
-        $('.nav-tabs a[href="#' + tab + '"]').tab('show');
-    };
-
-    function dimming() {
-        var progressbar = document.getElementById("skill_bar");
-        progressbar.classList.add('dim');
-
-        // var tableRow = document.getElementById("tbl");
-        // var row = tableRow.insertRow(1);
-        // var cell1 = row.insertCell(0);
-        // var cell2 = row.insertCell(1);
-        // var cell3 = row.insertCell(2);
-        // let buttonContainer = document.getElementById('button-container');
-        // let button = document.createElement("BUTTON");
-        // let node = document.createTextNode("Button Title");
-
-        // button.appendChild(node);
-        // cell1.innerHTML = button;
-        // cell2.innerHTML = "шаблоны";
-        // cell3.innerHTML = "аномалии";
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
-        let tr = document.createElement("TR");
-        let td1 = document.createElement("TD");
-        let td2 = document.createElement("TD");
-        let td = document.createElement("TD");
-        let button = document.createElement("BUTTON");
-
-        let node = document.createTextNode("Video");
-
-        td1.innerText = Math.floor(Math.random() * 15) + 1
-        td2.innerText = Math.floor(Math.random() * 15) + 1
-        button.appendChild(node);
-        td.onclick = toggle_player;
-        td.appendChild(node);
-        td.appendChild(progressbar);
-       
-        tr.appendChild(td);
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-
-        document.getElementById("tbl").appendChild(tr);
-
-    }
-
-
-</script>
 </body>
 
 
