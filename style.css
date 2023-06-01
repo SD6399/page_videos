@@ -56,7 +56,7 @@ li {
    
 }
 
-@import url('https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css');
+/* @import url('https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css'); */
 
 .container {
     margin-top: 10px;
@@ -106,7 +106,6 @@ li {
     box-shadow: 0 2px 8px rgb(210, 214, 214);
     height: 200px;
     width: 300px;
-    /* visibility: hidden; */
     
 }
 
@@ -169,3 +168,18 @@ li {
     .undim {
         filter:brightness(100%);
     }
+
+
+    .plyr__progress {
+        background-color: #FF0000;
+      }
+      
+      /* Customize the current time indicator color */
+      .plyr__progress--played {
+        background-color: #00FF00;
+      }
+      
+      /* Customize the duration indicator color */
+      .plyr__progress--buffer {
+        background-color: #0000FF;
+      }
